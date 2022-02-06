@@ -15,7 +15,10 @@ type server struct{}
 // Echo
 func (*server) Echo(ctx context.Context, req *proto.StringMessage) (*proto.StringMessage, error) {
 	log.Printf("receive message %s\n", req.GetValue())
-	return req, nil
+	msg := proto.StringMessage{
+		Value: "hello world",
+	}
+	return &msg, nil
 }
 
 // Sum
